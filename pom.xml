@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <name>MConnection Lib</name>
+    <groupId>org.example</groupId>
+    <artifactId>MConnection</artifactId>
+    <!--<version>1.0-SNAPSHOT</version>-->
+    <version>1.0.0</version>
+    <description>MConnection Lib</description>
+    <packaging>jar</packaging>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <java.version>1.8</java.version>
+        <!--<java.version>1.6</java.version>-->
+        <!--<java.version>1.8</java.version>-->
+        <maven.compiler.source>${java.version}</maven.compiler.source>
+        <maven.compiler.target>${java.version}</maven.compiler.target>
+        <!--<junit.version>4.8.2</junit.version>-->
+    </properties>
+
+    <repositories>
+        <repository>
+            <id>extjars</id>
+            <url>file:///${user.home}/.m2/repository</url>
+            <!--<url>http://akmsoft.net/mvnrepo/</url>-->
+        </repository>
+    </repositories>
+
+    <dependencies>
+        <!--    <dependency>-->
+        <!--        <groupId>extjars</groupId>-->
+        <!--        <artifactId>postgresql-9.4</artifactId>-->
+        <!--        <version>1212</version>-->
+        <!--    </dependency>-->
+        <dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <version>42.2.12</version>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-clean-plugin</artifactId>
+                <version>3.0.0</version>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.6.1</version>
+                <configuration>
+                    <compilerArgs>
+                        <arg>-g:lines,source</arg>
+                    </compilerArgs>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>2.6</version>
+                <executions>
+                    <execution>
+                        <phase>compile</phase>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                        <configuration>
+                            <includes>
+                                <include>**/*.class</include>
+                                <include>images/*.*</include>
+                                <include>sounds/*.*</include>
+                                <include>**/images/*.*</include>
+                                <include>**/sounds/*.*</include>
+                            </includes>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-install-plugin</artifactId>
+                <version>2.5.2</version>
+                <executions>
+                    <execution>
+                        <phase>install</phase>
+                        <goals>
+                            <goal>install-file</goal>
+                        </goals>
+                        <configuration>
+                            <packaging>jar</packaging>
+                            <artifactId>${project.artifactId}</artifactId>
+                            <groupId>${project.groupId}</groupId>
+                            <version>${project.version}</version>
+                            <file>
+                                ${project.build.directory}/${project.artifactId}-${project.version}.jar
+                            </file>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>
