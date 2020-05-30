@@ -1309,9 +1309,9 @@ public class MConnection {
 
         MConnection mc = MConnection.createMConnection(
             "org.postgresql.Driver",
-            "jdbc:postgresql://127.0.0.1:5432/oboz2",
-            "oboz2",
-            "uqu4Ahtu",
+            "jdbc:postgresql://127.0.0.1:5432/ib",
+            "test",
+            "test",
             LIMIT,
             idNames,
             sequences
