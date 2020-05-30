@@ -60,6 +60,20 @@ public class MConnection {
     }
 
     // createMConnection
+
+    /**
+     * режим драйвера,
+     * деражится пока живет приложение
+     * для десктопных приложений
+     * @param driver
+     * @param url
+     * @param login
+     * @param password
+     * @param limitTyp
+     * @param idNames
+     * @param sequences
+     * @return
+     */
     public static MConnection createMConnection(
         String driver,
         String url,
@@ -81,6 +95,18 @@ public class MConnection {
         return mc;
     }
 
+    /**
+     * режим datasource
+     * когда надо из пула берется соединение
+     * в конце соединение отдается в пул
+     * для экономии соединений
+     * соединение выделяется только тогда, когда она нужно
+     * @param dataSource
+     * @param limitTyp
+     * @param idNames
+     * @param sequences
+     * @return
+     */
     public static MConnection createMConnection(
         DataSource dataSource,
         String limitTyp,
